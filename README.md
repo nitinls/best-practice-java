@@ -11,3 +11,5 @@ https://dzone.com/articles/advancing-application-performance-with-nvme-storag-1?
 ## Springboot
 @ConditionalOnProperty
 https://www.baeldung.com/spring-boot-custom-auto-configuration
+
+Use retrofit for async call for non blocking request - retrofit2.Call;
