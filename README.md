@@ -7,3 +7,7 @@ https://dzone.com/articles/how-to-identify-blocking-code-using-asyncprofiler?edi
 https://dzone.com/articles/handling-service-timeouts-using-istio?edition=485324&utm_source=Zone%20Newsletter&utm_medium=email&utm_campaign=performance%202019-07-05
 
 https://dzone.com/articles/advancing-application-performance-with-nvme-storag-1?edition=485324&utm_source=Zone%20Newsletter&utm_medium=email&utm_campaign=performance%202019-07-05
+
+## Springboot
+@ConditionalOnProperty
+https://www.baeldung.com/spring-boot-custom-auto-configuration
