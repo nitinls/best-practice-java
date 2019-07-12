@@ -30,10 +30,18 @@ public interface NameAware {
 
 }
 
+
 -Use spring org.springframework.core.env.Environment env for get Env variables.
+
 
 - Use okhttp3.mockwebserver
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.QueueDispatcher;
 import okhttp3.mockwebserver.RecordedRequest
+
+
+
+- Spring profile 
++@Profile("!profile-service")
++@Primary
