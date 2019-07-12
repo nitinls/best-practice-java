@@ -12,4 +12,28 @@ https://dzone.com/articles/advancing-application-performance-with-nvme-storag-1?
 @ConditionalOnProperty
 https://www.baeldung.com/spring-boot-custom-auto-configuration
 
-Use retrofit for async call for non blocking request - retrofit2.Call;
+- Use retrofit for async call for non blocking request - retrofit2.Call; retrofit2.Response;
+
+- Use Lombok
+@Getter
+@ToString
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
+@EqualsAndHashCode
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+- Enum type nameware 
+public interface NameAware {
+
+    String getName();
+
+}
+
+-Use spring org.springframework.core.env.Environment env for get Env variables.
+
+- Use okhttp3.mockwebserver
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+import okhttp3.mockwebserver.QueueDispatcher;
+import okhttp3.mockwebserver.RecordedRequest
