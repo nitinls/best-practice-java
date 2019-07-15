@@ -1,6 +1,7 @@
 # best-practice-java
 best-practice-java
 - Strings util Strings.isNullOrEmpty
+- use javax.ws.rs.core.Response;
 
 https://dzone.com/articles/how-to-identify-blocking-code-using-asyncprofiler?edition=485324&utm_source=Zone%20Newsletter&utm_medium=email&utm_campaign=performance%202019-07-05
 
