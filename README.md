@@ -45,3 +45,16 @@ import okhttp3.mockwebserver.RecordedRequest
 - Spring profile 
 +@Profile("!profile-service")
 +@Primary
+
+
+### https://www.ionos.com/community/hosting/redis/using-redis-in-docker-containers/
+## Running Redis in a Docker Container
+sudo docker run --name my-redis-container -d redis 
+
+## Connecting to Redis Running in a Docker Container
+sudo docker run --name my-redis-application --link my-redis-container:redis -d centos
+
+sudo docker run -it --name my-redis-cli --link my-redis-container:redis --rm redis redis-cli -h redis -p 6379
+
+Connect to a Redis Container From a Remote Server
+sudo docker run --name my-redis-container -p 7001:6379 -d redis
