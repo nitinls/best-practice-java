@@ -1,5 +1,6 @@
 # best-practice-java
 best-practice-java
+- Strings util Strings.isNullOrEmpty
 
 https://dzone.com/articles/how-to-identify-blocking-code-using-asyncprofiler?edition=485324&utm_source=Zone%20Newsletter&utm_medium=email&utm_campaign=performance%202019-07-05
 
@@ -58,3 +59,8 @@ sudo docker run -it --name my-redis-cli --link my-redis-container:redis --rm red
 
 Connect to a Redis Container From a Remote Server
 sudo docker run --name my-redis-container -p 7001:6379 -d redis
+
+
+
+##Spring 
+https://www.baeldung.com/spring-inject-prototype-bean-into-singleton
