@@ -65,3 +65,8 @@ sudo docker run --name my-redis-container -p 7001:6379 -d redis
 
 ##Spring 
 https://www.baeldung.com/spring-inject-prototype-bean-into-singleton
+
+Own certificate authority
+Create a simple, internal CA for your microservice architecture or integration testing
+https://opensource.com/article/19/4/certificate-authority
+
