@@ -70,3 +70,23 @@ Own certificate authority
 Create a simple, internal CA for your microservice architecture or integration testing
 https://opensource.com/article/19/4/certificate-authority
 
+
+##DB
+
+spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@host:port/db.service
+spring.datasource.username=$login}
+spring.datasource.password=${password}
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.maximum-pool-size=50
+spring.datasource.hikari.connection-test-query=select 1 from dual
+spring.datasource.hikari.idle-timeout=600000
+spring.datasource.hikari.connection-timeout=3000
+spring.datasource.hikari.validation-timeout=3000
+spring.datasource.hikari.login-timeout=6000
+spring.datasource.hikari.max-lifetime=180000
+spring.datasource.hikari.data-source-properties.cachePrepStmts=true
+spring.datasource.hikari.data-source-properties.prepStmtCacheSize=100
+spring.datasource.hikari.data-source-properties.prepStmtCacheSqlLimit=2048
+spring.datasource.hikari.data-source-properties.useServerPrepStmts=true
+
