@@ -92,3 +92,6 @@ spring.datasource.hikari.data-source-properties.useServerPrepStmts=true
 
 ##Service Discovery
 https://www.youtube.com/watch?v=Dd9-UxrNiD0
+
+## IOT
+https://devpost.com/software/iot-smart-kitchen-knob
