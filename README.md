@@ -90,3 +90,5 @@ spring.datasource.hikari.data-source-properties.prepStmtCacheSize=100
 spring.datasource.hikari.data-source-properties.prepStmtCacheSqlLimit=2048
 spring.datasource.hikari.data-source-properties.useServerPrepStmts=true
 
+##Service Discovery
+https://www.youtube.com/watch?v=Dd9-UxrNiD0
