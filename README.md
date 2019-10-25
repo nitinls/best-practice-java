@@ -42,7 +42,8 @@ import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.QueueDispatcher;
 import okhttp3.mockwebserver.RecordedRequest
 
-
+--Validation
+https://www.baeldung.com/javax-validation
 
 - Spring profile 
 +@Profile("!profile-service")
