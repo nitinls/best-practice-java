@@ -72,6 +72,9 @@ Create a simple, internal CA for your microservice architecture or integration t
 https://opensource.com/article/19/4/certificate-authority
 
 
+@ConditionalOnProperty(name = "tes.svcs.key.cache.enabled", havingValue = "true", matchIfMissing = true)
+
+
 ##DB
 
 spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
