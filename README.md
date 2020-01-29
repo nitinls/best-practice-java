@@ -74,6 +74,8 @@ https://opensource.com/article/19/4/certificate-authority
 
 @ConditionalOnProperty(name = "tes.svcs.key.cache.enabled", havingValue = "true", matchIfMissing = true)
 
+##JWT, JWE, JWS
+https://medium.facilelogin.com/jwt-jws-and-jwe-for-not-so-dummies-b63310d201a3
 
 ##DB
 
