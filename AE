@@ -1,0 +1,142 @@
+import static java.lang.String.format;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
+
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
+public final class AsyncExecutor<RES> {
+
+    private final Collection<Supplier<RES>> suppliers = new LinkedHashSet<>();
+
+    public AsyncExecutor() {
+    }
+
+    public AsyncExecutor<RES> add(final Supplier<RES> supplier) {
+        suppliers.add(supplier);
+        return this;
+    }
+
+    public AsyncExecutor<RES> add(final Collection<Supplier<RES>> suppliers) {
+        suppliers.addAll(suppliers);
+        return this;
+    }
+
+    public final RES executeWinner(final ThreadPoolTaskExecutor taskExecutor) {
+
+        final CountDownLatch countDown = new CountDownLatch(1);
+        final AtomicReference<RES> resultRef = new AtomicReference<>();
+
+        suppliers.forEach(req -> {
+
+            taskExecutor.execute(() -> {
+
+                RES res = null;
+
+                try {
+                    res = req.get();
+                } catch (final Exception exception) {
+                    log.error(format("Exception occured in executeWinner(), %s", exception.getMessage()), exception);
+                }
+
+                if (null != res && resultRef.compareAndSet(null, res)) {
+                    countDown.countDown();
+                }
+
+            });
+
+        });
+
+        try {
+            // TODO read property
+            countDown.await(60, SECONDS);
+        } catch (final InterruptedException exception) {
+            log.error(format("InterruptedException occured in executeWinner(), %s", exception.getMessage()), exception);
+        }
+
+        return resultRef.get();
+
+    }
+
+    public final Collection<RES> executeAll(final ThreadPoolTaskExecutor taskExecutor) {
+
+        final List<Future<RES>> results = new ArrayList<>();
+
+        suppliers.forEach(req -> {
+
+            results.add(taskExecutor.submit(() -> {
+
+                RES res = null;
+
+                try {
+                    res = req.get();
+                } catch (final Exception exception) {
+                    log.error(format("xception occured in executeAll(), %s", exception.getMessage()), exception);
+                }
+
+                return res;
+
+            }));
+
+        });
+
+        boolean isAnyRunning = false;
+
+        final Collection<RES> response = new ArrayList<>();
+
+        do {
+
+            if (results.isEmpty()) {
+                break;
+            }
+
+            final Iterator<Future<RES>> iterator = results.iterator();
+
+            while (iterator.hasNext()) {
+
+                final Future<RES> future = iterator.next();
+
+                if (!future.isDone()) {
+                    isAnyRunning = true;
+                    continue;
+                }
+
+                try {
+
+                    final RES res = future.get();
+
+                    if (null != res) {
+                        response.add(res);
+                    }
+
+                } catch (final InterruptedException exception) {
+                    log.error(format("InterruptedException occured in executeAll(), %s", exception.getMessage()),
+                            exception);
+                } catch (final ExecutionException exception) {
+                    log.error(format("ExecutionException occured in executeAll(), %s", exception.getMessage()),
+                            exception);
+                } finally {
+                    iterator.remove();
+                }
+
+            }
+
+        } while (isAnyRunning);
+
+        return response;
+
+    }
+
+}
