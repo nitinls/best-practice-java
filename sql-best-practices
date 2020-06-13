@@ -1,1 +1,8 @@
-Change Tracking	vs Change Data Capture
+Change Tracking	vs Change Data Capture is there in entriprise version
+
+https://blog.syncsort.com/2019/07/big-data/change-data-capture-change-tracking-three-examples/
+
+Change Tracking	Change Data Capture
+Creates a hidden, internal table so users can query the time and type of any change made to a row in the database table	Identifies and captures just the most recent production data and metadata changes, and then enables data replication software to copy those changes to a separate data repository
+Only stores the most recent change to each row – doesn’t maintain change history	Maintains a history of row changes, including the actual data that was changed
+Operates synchronously, so that change information is refreshed in real time, coincident with the incorporation of that change into the database	Asynchronously reading the database’s transaction log to detect when a change has occurred
