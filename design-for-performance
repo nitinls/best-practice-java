@@ -1,0 +1,5 @@
+Use
+- Non blocking IO
+- Use prefetches
+- Memory localaty.
+- page cost optimisation
